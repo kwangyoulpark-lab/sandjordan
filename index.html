@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kwangyoul Park | Sand Supply Specialist</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --dark: #17212b;
+      --blue: #1f3f5b;
+      --sand: #d8b46a;
+      --light-sand: #f4ead5;
+      --gray: #6b7280;
+      --white: #ffffff;
+      --soft: #f7f7f5;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--dark);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 0;
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 20px;
+      color: var(--blue);
+      letter-spacing: 0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .nav-links a:hover {
+      color: var(--sand);
+    }
+
+    .menu-btn {
+      display: none;
+      border: none;
+      background: var(--blue);
+      color: white;
+      padding: 9px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .hero {
+      min-height: 86vh;
+      display: flex;
+      align-items: center;
+      background:
+        linear-gradient(135deg, rgba(23, 33, 43, 0.88), rgba(31, 63, 91, 0.58)),
+        url("assets/images/hero-vessel.jpg") center/cover;
+      color: var(--white);
+      padding: 80px 0;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 720px);
+      align-items: center;
+    }
+
+    .tagline {
+      display: inline-block;
+      background: rgba(216, 180, 106, 0.18);
+      border: 1px solid rgba(216, 180, 106, 0.55);
+      color: var(--light-sand);
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(38px, 6vw, 68px);
+      line-height: 1.05;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 span {
+      color: var(--sand);
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: #e5e7eb;
+      max-width: 620px;
+      margin-bottom: 30px;
+    }
+
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .btn {
+      padding: 13px 22px;
+      border-radius: 10px;
+      font-weight: 700;
+      display: inline-block;
+      transition: 0.25s ease;
+    }
+
+    .btn-primary {
+      background: var(--sand);
+      color: var(--dark);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      background: #e2c17a;
+    }
+
+    .btn-outline {
+      border: 1px solid rgba(255,255,255,0.6);
+      color: var(--white);
+    }
+
+    .btn-outline:hover {
+      background: rgba(255,255,255,0.12);
+    }
+
+    section {
+      padding: 86px 0;
+    }
+
+    .section-title {
+      max-width: 760px;
+      margin-bottom: 42px;
+    }
+
+    .section-title small {
+      color: var(--sand);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(30px, 4vw, 44px);
+      margin: 10px 0 14px;
+      color: var(--dark);
+    }
+
+    .section-title p {
+      color: var(--gray);
+      font-size: 17px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 42px;
+      align-items: center;
+    }
+
+    .about-card {
+      background: var(--soft);
+      border-radius: 22px;
+      padding: 32px;
+      border-left: 6px solid var(--sand);
+    }
+
+    .about-card h3 {
+      font-size: 26px;
+      margin-bottom: 16px;
+      color: var(--blue);
+    }
+
+    .about-card p {
+      color: #374151;
+      margin-bottom: 14px;
+    }
+
+    .quick-info {
+      display: grid;
+      gap: 16px;
+    }
+
+    .info-box {
+      padding: 22px;
+      background: var(--white);
+      border: 1px solid #e5e7eb;
+      border-radius: 18px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.05);
+    }
+
+    .info-box h4 {
+      color: var(--blue);
+      margin-bottom: 6px;
+      font-size: 18px;
+    }
+
+    .info-box p {
+      color: var(--gray);
+    }
+
+    .experience {
+      background: var(--soft);
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .card {
+      background: var(--white);
+      border-radius: 20px;
+      border: 1px solid #e5e7eb;
+      overflow: hidden;
+      transition: 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.08);
+    }
+
+    .card-photo {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      display: block;
+      object-fit: cover;
+      background: var(--light-sand);
+    }
+
+    .card-body {
+      padding: 24px 28px 28px;
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      color: var(--dark);
+    }
+
+    .card p {
+      color: var(--gray);
+      font-size: 15px;
+    }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-top: 24px;
+    }
+
+    .trust-item {
+      background: var(--blue);
+      color: white;
+      padding: 24px 20px;
+      border-radius: 18px;
+      text-align: center;
+    }
+
+    .trust-item strong {
+      display: block;
+      font-size: 28px;
+      color: var(--sand);
+      margin-bottom: 4px;
+    }
+
+    .projects {
+      background: var(--dark);
+      color: var(--white);
+    }
+
+    .projects .section-title h2,
+    .projects .section-title p {
+      color: var(--white);
+    }
+
+    .project-gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .project-card {
+      position: relative;
+      min-height: 240px;
+      border-radius: 20px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.2);
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 100%;
+      min-height: 240px;
+      display: block;
+      object-fit: cover;
+      transition: transform 0.35s ease;
+    }
+
+    .project-card:hover img {
+      transform: scale(1.04);
+    }
+
+    .project-caption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 18px;
+      background: linear-gradient(180deg, transparent, rgba(23, 33, 43, 0.95));
+      color: #f9fafb;
+    }
+
+    .project-caption strong {
+      display: block;
+      font-size: 17px;
+      margin-bottom: 3px;
+    }
+
+    .project-caption span {
+      color: #d1d5db;
+      font-size: 14px;
+    }
+
+    .contact {
+      background: linear-gradient(135deg, var(--light-sand), #ffffff);
+    }
+
+    .contact-box {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+      background: white;
+      border-radius: 24px;
+      padding: 36px;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.08);
+    }
+
+    .contact-info h3 {
+      font-size: 30px;
+      margin-bottom: 16px;
+      color: var(--blue);
+    }
+
+    .contact-info p {
+      color: var(--gray);
+      margin-bottom: 20px;
+    }
+
+    .contact-list {
+      list-style: none;
+    }
+
+    .contact-list li {
+      padding: 12px 0;
+      border-bottom: 1px solid #e5e7eb;
+      color: #374151;
+    }
+
+    .qr-section {
+      margin-top: 24px;
+    }
+
+    .qr-section h4 {
+      color: var(--blue);
+      font-size: 18px;
+      margin-bottom: 12px;
+    }
+
+    .qr-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .qr-card {
+      border: 1px solid #e5e7eb;
+      border-radius: 14px;
+      padding: 10px;
+      background: #ffffff;
+      text-align: center;
+    }
+
+    .qr-card img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      display: block;
+      object-fit: contain;
+      object-position: center;
+      border-radius: 10px;
+      background: var(--soft);
+    }
+
+    .qr-card strong {
+      display: block;
+      color: var(--dark);
+      font-size: 14px;
+      margin-top: 8px;
+    }
+
+    form {
+      display: grid;
+      gap: 14px;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1px solid #d1d5db;
+      border-radius: 10px;
+      font-size: 15px;
+      font-family: inherit;
+    }
+
+    textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
+
+    button.submit-btn {
+      border: none;
+      background: var(--blue);
+      color: white;
+      padding: 14px 18px;
+      border-radius: 10px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: 0.25s ease;
+    }
+
+    button.submit-btn:hover {
+      background: var(--dark);
+    }
+
+    footer {
+      background: var(--dark);
+      color: #d1d5db;
+      text-align: center;
+      padding: 24px 0;
+      font-size: 14px;
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: 0.7s ease;
+    }
+
+    .fade-in.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .about-grid,
+      .contact-box {
+        grid-template-columns: 1fr;
+      }
+
+      .cards,
+      .project-gallery {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .trust-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .qr-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 680px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 64px;
+        right: 4%;
+        background: white;
+        padding: 18px;
+        border-radius: 14px;
+        flex-direction: column;
+        box-shadow: 0 18px 40px rgba(0,0,0,0.12);
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+
+      .cards,
+      .project-gallery,
+      .trust-grid,
+      .qr-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 58px 0;
+      }
+
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container navbar">
+      <div class="logo">Kwangyoul Park</div>
+      <nav class="nav-links" id="navLinks">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button class="menu-btn" id="menuBtn" type="button" aria-controls="navLinks" aria-expanded="false">Menu</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="fade-in">
+          <span class="tagline">Construction & Reclamation Sand Supply</span>
+          <h1>Reliable Sand Supply Specialist <span>Based in the Philippines</span></h1>
+          <p>
+            I have long-term experience in the Philippines, supporting construction,
+            landfill, and reclamation-related sand supply projects with practical field knowledge,
+            local coordination, and project-based logistics support.
+          </p>
+          <div class="btn-group">
+            <a href="#contact" class="btn btn-primary">Contact Me</a>
+            <a href="#experience" class="btn btn-outline">View Experience</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container about-grid">
+        <div class="section-title fade-in">
+          <small>About Me</small>
+          <h2>Field-based experience with a practical business mindset.</h2>
+          <p>
+            This personal introduction is designed to build trust before a formal company profile.
+            It focuses on experience, reliability, and real project understanding.
+          </p>
+        </div>
+
+        <div class="about-card fade-in">
+          <h3>Kwangyoul Park</h3>
+          <p>
+            I have been based in the Philippines for many years and have been involved in
+            sand supply for construction, landfill, and reclamation-related projects.
+          </p>
+          <p>
+            My experience includes sand sourcing, field coordination, trucking, marine transport support,
+            and communication with project partners, contractors, and local operators.
+          </p>
+          <p>
+            I believe trust is built through clear communication, realistic project planning,
+            and reliable execution on the ground.
+          </p>
+        </div>
+      </div>
+
+      <div class="container quick-info" style="margin-top: 34px;">
+        <div class="info-box fade-in">
+          <h4>Business Focus</h4>
+          <p>Construction sand, filling sand, reclamation sand, and project-based material supply.</p>
+        </div>
+        <div class="info-box fade-in">
+          <h4>Working Style</h4>
+          <p>Practical, field-oriented, relationship-based, and focused on long-term trust.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="experience" id="experience">
+      <div class="container">
+        <div class="section-title fade-in">
+          <small>Core Experience</small>
+          <h2>Areas where I can support project partners.</h2>
+          <p>
+            My role is not only material supply. I help connect supply, transport, site conditions,
+            and project communication into one practical working flow.
+          </p>
+        </div>
+
+        <div class="cards">
+          <div class="card fade-in">
+            <img class="card-photo" src="assets/images/experience-sand-supply.jpg" alt="Sand stockpile and heavy equipment at supply site" />
+            <div class="card-body">
+              <h3>Sand Supply</h3>
+              <p>Construction sand, filling sand, and reclamation-related sand supply coordination.</p>
+            </div>
+          </div>
+          <div class="card fade-in">
+            <img class="card-photo" src="assets/images/experience-project-support.jpg" alt="Trucks and equipment lined up at a sand project site" />
+            <div class="card-body">
+              <h3>Project Support</h3>
+              <p>Support for contractors, developers, and project owners during site operations.</p>
+            </div>
+          </div>
+          <div class="card fade-in">
+            <img class="card-photo" src="assets/images/experience-logistics.jpg" alt="Conveyor system used for sand loading operations" />
+            <div class="card-body">
+              <h3>Logistics Coordination</h3>
+              <p>Trucking, loading, unloading, marine transport, and local coordination support.</p>
+            </div>
+          </div>
+          <div class="card fade-in">
+            <img class="card-photo" src="assets/images/experience-local-network.jpg" alt="Coastal project site with access road and shoreline" />
+            <div class="card-body">
+              <h3>Local Network</h3>
+              <p>Long-term local experience in the Philippines with practical business relationships.</p>
+            </div>
+          </div>
+          <div class="card fade-in">
+            <img class="card-photo" src="assets/images/experience-field-understanding.jpg" alt="Excavators working around sand stockpiles and site water" />
+            <div class="card-body">
+              <h3>Field Understanding</h3>
+              <p>Practical knowledge of site conditions, delivery issues, and project requirements.</p>
+            </div>
+          </div>
+          <div class="card fade-in">
+            <img class="card-photo" src="assets/images/experience-trust-building.jpg" alt="Excavator loading sand into a truck at the project site" />
+            <div class="card-body">
+              <h3>Trust Building</h3>
+              <p>Clear communication, realistic commitments, and long-term partnership mindset.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="trust-grid fade-in">
+          <div class="trust-item">
+            <strong>10+</strong>
+            Years in the Philippines
+          </div>
+          <div class="trust-item">
+            <strong>B2B</strong>
+            Project Communication
+          </div>
+          <div class="trust-item">
+            <strong>Field</strong>
+            Practical Experience
+          </div>
+          <div class="trust-item">
+            <strong>Local</strong>
+            Coordination Network
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="projects" id="projects">
+      <div class="container">
+        <div class="section-title fade-in">
+          <small>Project Photos</small>
+          <h2>Actual project records from field operations.</h2>
+          <p>
+            These photos show marine transport, loading work, trucking, and on-site coordination
+            during sand supply operations.
+          </p>
+        </div>
+
+        <div class="project-gallery">
+          <figure class="project-card fade-in">
+            <img src="assets/images/project-barge-transport.jpg" alt="Loaded barge moving sand by sea" />
+            <figcaption class="project-caption">
+              <strong>Barge Transport</strong>
+              <span>Marine movement of loaded sand</span>
+            </figcaption>
+          </figure>
+          <figure class="project-card fade-in">
+            <img src="assets/images/project-barge-loading.jpg" alt="Truck and loader working on a sand barge" />
+            <figcaption class="project-caption">
+              <strong>Barge Loading</strong>
+              <span>Truck and loader coordination on board</span>
+            </figcaption>
+          </figure>
+          <figure class="project-card fade-in">
+            <img src="assets/images/project-truck-delivery-line.jpg" alt="Line of trucks waiting at a sand loading area" />
+            <figcaption class="project-caption">
+              <strong>Truck Delivery Line</strong>
+              <span>Coordinated hauling at the loading site</span>
+            </figcaption>
+          </figure>
+          <figure class="project-card fade-in">
+            <img src="assets/images/project-port-to-barge.jpg" alt="Trucks loading sand from port area to barge" />
+            <figcaption class="project-caption">
+              <strong>Port to Barge</strong>
+              <span>Loading flow from land transport to vessel</span>
+            </figcaption>
+          </figure>
+          <figure class="project-card fade-in">
+            <img src="assets/images/project-grab-shell.jpg" alt="Grab shell equipment handling sand above a vessel" />
+            <figcaption class="project-caption">
+              <strong>Grab Shell Operation</strong>
+              <span>Marine handling equipment in use</span>
+            </figcaption>
+          </figure>
+          <figure class="project-card fade-in">
+            <img src="assets/images/project-mother-vessel.jpg" alt="Mother vessel and support barge during offshore sand handling" />
+            <figcaption class="project-caption">
+              <strong>Mother Vessel Support</strong>
+              <span>Offshore transfer and coordination</span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="container contact-box fade-in">
+        <div class="contact-info">
+          <h3>Let's Build Trust First</h3>
+          <p>
+            For project discussion, material supply, construction sand, landfill, or reclamation-related inquiries,
+            please contact me directly.
+          </p>
+          <ul class="contact-list">
+            <li><strong>Name:</strong> Kwangyoul Park</li>
+            <li><strong>Location:</strong> Philippines</li>
+            <li><strong>Mobile:</strong> <a href="tel:+639496424135">+63 949 642 4135</a></li>
+            <li><strong>Email:</strong> <a href="mailto:kwangyoulparkk@gmail.com">kwangyoulparkk@gmail.com</a></li>
+          </ul>
+
+          <div class="qr-section">
+            <h4>Contact QR Codes</h4>
+            <div class="qr-grid">
+              <div class="qr-card">
+                <img src="assets/qr/whatsapp.png" alt="WhatsApp QR code" />
+                <strong>WhatsApp</strong>
+              </div>
+              <div class="qr-card">
+                <img src="assets/qr/wechat.png" alt="WeChat QR code" />
+                <strong>WeChat</strong>
+              </div>
+              <div class="qr-card">
+                <img src="assets/qr/viber.png" alt="Viber QR code" />
+                <strong>Viber</strong>
+              </div>
+              <div class="qr-card">
+                <img src="assets/qr/telegram.png" alt="Telegram QR code" />
+                <strong>Telegram</strong>
+              </div>
+              <div class="qr-card">
+                <img src="assets/qr/messenger.png" alt="Messenger QR code" />
+                <strong>Messenger</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <form id="contactForm">
+          <input type="text" id="name" placeholder="Your Name" required />
+          <input type="text" id="company" placeholder="Company / Project" />
+          <input type="email" id="email" placeholder="Email Address" required />
+          <textarea id="message" placeholder="Tell me about your project or inquiry" required></textarea>
+          <button type="submit" class="submit-btn">Send Inquiry</button>
+          <p id="formMessage" style="font-size: 14px; color: var(--gray);"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2026 Kwangyoul Park. Construction & Reclamation Sand Supply Specialist.
+    </div>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+
+    menuBtn.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('active');
+      menuBtn.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+          navLinks.classList.remove('active');
+          menuBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
+
+    const fadeElements = document.querySelectorAll('.fade-in');
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.14 });
+
+    fadeElements.forEach(element => observer.observe(element));
+
+    const contactForm = document.getElementById('contactForm');
+    const formMessage = document.getElementById('formMessage');
+
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const company = document.getElementById('company').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      const subject = encodeURIComponent('Project Inquiry - Sand Supply');
+      const body = encodeURIComponent(
+        `Name: ${name}\nCompany / Project: ${company}\nEmail: ${email}\n\nMessage:\n${message}`
+      );
+
+      window.location.href = `mailto:kwangyoulparkk@gmail.com?subject=${subject}&body=${body}`;
+
+      formMessage.textContent = 'Your email app should open now. Please check the message before sending.';
+    });
+  </script>
+</body>
+</html>
