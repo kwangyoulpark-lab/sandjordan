@@ -426,6 +426,23 @@
       text-align: center;
     }
 
+    a.qr-card {
+      display: block;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    a.qr-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--sand);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    a.qr-card:focus-visible {
+      outline: 2px solid var(--sand);
+      outline-offset: 3px;
+    }
+
     .qr-card img {
       width: 100%;
       aspect-ratio: 1 / 1;
@@ -793,25 +810,29 @@
           <div class="qr-section">
             <h4>Contact QR Codes</h4>
             <div class="qr-grid">
-              <div class="qr-card">
+              <a class="qr-card" href="https://wa.me/639496424135" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
                 <img src="assets/qr/whatsapp.png" alt="WhatsApp QR code" />
                 <strong>WhatsApp</strong>
-              </div>
+              </a>
               <div class="qr-card">
                 <img src="assets/qr/wechat.png" alt="WeChat QR code" />
                 <strong>WeChat</strong>
               </div>
-              <div class="qr-card">
+              <a class="qr-card" href="viber://chat?number=%2B639496424135" aria-label="Chat on Viber">
                 <img src="assets/qr/viber.png" alt="Viber QR code" />
                 <strong>Viber</strong>
-              </div>
-              <div class="qr-card">
+              </a>
+              <a class="qr-card" href="https://t.me/ENGR999" target="_blank" rel="noopener noreferrer" aria-label="Chat on Telegram">
                 <img src="assets/qr/telegram.png" alt="Telegram QR code" />
                 <strong>Telegram</strong>
-              </div>
-              <div class="qr-card">
+              </a>
+              <a class="qr-card" href="https://m.me/jordanpark123" target="_blank" rel="noopener noreferrer" aria-label="Chat on Messenger">
                 <img src="assets/qr/messenger.png" alt="Messenger QR code" />
                 <strong>Messenger</strong>
+              </a>
+              <div class="qr-card">
+                <img src="assets/qr/kakaotalk.png" alt="KakaoTalk QR code" />
+                <strong>KakaoTalk</strong>
               </div>
             </div>
           </div>
